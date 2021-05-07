@@ -50,9 +50,6 @@ func Generate() http.HandlerFunc {
 		}
 		w.WriteHeader(http.StatusOK)
 
-		if fi, err := os.Stat(tmpfile.Name()); err == nil {
-			log.Printf("%+v\n", fi)
-		}
 		tmpfileread, err := os.Open(tmpfile.Name())
 		if err != nil {
 			log.Println(err)
