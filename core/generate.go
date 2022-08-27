@@ -19,11 +19,11 @@ plugins {
 repositories {
     // Use jcenter for resolving dependencies.
     // You can declare any Maven/Ivy/file repository here.
-    jcenter()
+    mavenCentral()
 }
 
 dependencies {
-    compile '{{.Dependency}}'
+    implementation '{{.Dependency}}'
 }
 
 sourceCompatibility = '{{.SourceCompatibility}}'
@@ -31,6 +31,8 @@ targetCompatibility = '{{.TargetCompatibility}}'
 
 jar {
     dependsOn configurations.runtimeClasspath
+
+    duplicatesStrategy = 'include'
 
     from {
         configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
